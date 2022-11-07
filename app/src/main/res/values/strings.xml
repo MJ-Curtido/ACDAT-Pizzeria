@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ACDAT-Pizzeria</string>
+    <string name="lblUsuario">Usuario:</string>
+    <string name="lblContra">Contraseña:</string>
+    <string name="btnIniciarSesion">Iniciar Sesión</string>
+    <string name="btnRegistrarse">Registrarse</string>
 </resources>
