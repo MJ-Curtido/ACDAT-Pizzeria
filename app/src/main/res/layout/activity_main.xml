@@ -28,18 +28,6 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
-    <EditText
-        android:id="@+id/tbContra"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="78dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tbUsuario"
-        tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
-
     <TextView
         android:id="@+id/lblUsuario"
         android:layout_width="wrap_content"
@@ -65,7 +53,7 @@
         android:layout_width="210dp"
         android:layout_height="55dp"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="50dp"
         android:text="@string/btnIniciarSesion"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tbContra" />
@@ -75,8 +63,20 @@
         android:layout_width="210dp"
         android:layout_height="55dp"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="26dp"
         android:text="@string/btnRegistrarse"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tbContra" />
+        app:layout_constraintTop_toBottomOf="@+id/btnIniciarSesion" />
+
+    <EditText
+        android:id="@+id/tbContra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblContra"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

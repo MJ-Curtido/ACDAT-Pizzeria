@@ -4,6 +4,7 @@ import com.example.acdat_pizzeria.enums.TipoIngrediente;
 import com.example.acdat_pizzeria.enums.TipoNombre;
 import com.example.acdat_pizzeria.enums.TipoSalsa;
 import com.example.acdat_pizzeria.enums.TipoTamanyo;
+import com.example.acdat_pizzeria.servicio.Servicio;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -19,6 +20,9 @@ public class Pizza {
     private Usuario usuario;
     private Integer precio;
 
+    public Pizza() {
+    }
+
     public Pizza(TipoTamanyo tamanyo, TipoSalsa salsa, ArrayList<TipoIngrediente> ingredientes, Usuario usuario) {
         this.tamanyo = tamanyo;
         this.salsa = salsa;
@@ -32,20 +36,26 @@ public class Pizza {
     }
 
     public Pizza(TipoTamanyo tamanyo, TipoNombre nombre, Usuario usuario) {
+        Pizza pizzaTemp = Servicio.getInstance().getPizzaPred(nombre);
+
         this.tamanyo = tamanyo;
-        this.nombre = nombre;
+        this.salsa = pizzaTemp.getSalsa();
+        this.ingredientes = pizzaTemp.getIngredientes();
+        this.favorita = false;
         this.usuario = usuario;
-        //poner para que te busque del dato la pizza predeterminada
+        this.nombre = TipoNombre.PERSONALIZADA;
         this.calcularPrecio();
+        this.id = idTemp;
+        idTemp++;
     }
 
-    public Pizza(TipoSalsa salsa, ArrayList<TipoIngrediente> ingredientes) {
+    public Pizza(TipoSalsa salsa, ArrayList<TipoIngrediente> ingredientes, TipoNombre nombre) {
         this.tamanyo = null;
         this.salsa = salsa;
         this.ingredientes = ingredientes;
         this.favorita = false;
         this.usuario = null;
-        this.nombre = TipoNombre.PERSONALIZADA;
+        this.nombre = nombre;
         this.id = idTemp;
         idTemp++;
     }
@@ -71,6 +81,14 @@ public class Pizza {
         if (this.ingredientes != null) {
             this.precio += this.ingredientes.size();
         }
+    }
+
+    public void setNombre(TipoNombre nombre) {
+        this.nombre = nombre;
+    }
+
+    public TipoNombre getNombre() {
+        return this.nombre;
     }
 
     public void setUsuario(Usuario usuario) {
