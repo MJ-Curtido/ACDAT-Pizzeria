@@ -6,4 +6,83 @@
     android:layout_height="match_parent"
     tools:context=".vista.Registro">
 
+    <EditText
+        android:id="@+id/tbContra5"
+        android:layout_width="302dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="@string/tbContraRegistro"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblContra5"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/lblContra5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="110dp"
+        android:text="@string/lblContraRegistro"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tbContraRegistro" />
+
+    <EditText
+        android:id="@+id/tbUsuarioRegistro"
+        android:layout_width="301dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/tbUsuario"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblUsuarioRegistro"
+        tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/lblUsuarioRegistro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="104dp"
+        android:text="@string/lblUsuario"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnRegistrarseRegistro"
+        android:layout_width="210dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="115dp"
+        android:layout_marginTop="116dp"
+        android:text="@string/btnRegistrarse"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tbContra5" />
+
+    <EditText
+        android:id="@+id/tbContraRegistro"
+        android:layout_width="302dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="@string/tbContra"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblContraRegistro"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/lblContraRegistro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="87dp"
+        android:text="@string/lblContra"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tbUsuarioRegistro" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

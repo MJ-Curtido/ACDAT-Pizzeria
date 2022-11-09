@@ -7,11 +7,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.acdat_pizzeria.R;
 import com.example.acdat_pizzeria.databinding.ActivityMainBinding;
-import com.example.acdat_pizzeria.listener.ListenerBotonesMain;
 import com.example.acdat_pizzeria.servicio.Servicio;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private ActivityMainBinding binding;
 
     @Override
@@ -20,7 +20,9 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        new ListenerBotonesMain(this);
+
+        binding.btnIniciarSesion.setOnClickListener(this);
+        binding.btnRegistrarse.setOnClickListener(this);
     }
 
     public ActivityMainBinding getBinding() {
@@ -41,5 +43,15 @@ public class MainActivity extends AppCompatActivity {
     public void irARegistro() {
         Intent i = new Intent(MainActivity.this, Registro.class);
         startActivity(i);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.btnIniciarSesion) {
+            this.comprobarInicioSesion();
+        }
+        else {
+            this.irARegistro();
+        }
     }
 }

@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="331dp"
-        android:layout_height="220dp"
+        android:layout_width="357dp"
+        android:layout_height="219dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,22 +18,23 @@
 
     <EditText
         android:id="@+id/tbUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="120dp"
+        android:layout_width="301dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
+        android:hint="@string/tbUsuario"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/lblUsuario"
         tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/lblUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="79dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="76dp"
         android:text="@string/lblUsuario"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -42,11 +43,11 @@
         android:id="@+id/lblContra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="204dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="44dp"
         android:text="@string/lblContra"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/tbUsuario" />
 
     <Button
         android:id="@+id/btnIniciarSesion"
@@ -63,18 +64,19 @@
         android:layout_width="210dp"
         android:layout_height="55dp"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="25dp"
         android:text="@string/btnRegistrarse"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnIniciarSesion" />
 
     <EditText
         android:id="@+id/tbContra"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_width="302dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="64dp"
         android:layout_marginTop="24dp"
         android:ems="10"
+        android:hint="@string/tbContra"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblContra"

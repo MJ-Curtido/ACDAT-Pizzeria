@@ -4,4 +4,8 @@
     <string name="lblContra">Contraseña:</string>
     <string name="btnIniciarSesion">Iniciar Sesión</string>
     <string name="btnRegistrarse">Registrarse</string>
+    <string name="tbUsuario">Escriba su nombre de usuario</string>
+    <string name="tbContra">Escriba su contraseña</string>
+    <string name="lblContraRegistro">Repetir contraseña:</string>
+    <string name="tbContraRegistro">Repita su contraseña</string>
 </resources>
