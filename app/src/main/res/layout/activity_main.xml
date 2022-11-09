@@ -10,7 +10,7 @@
         android:id="@+id/imageView"
         android:layout_width="357dp"
         android:layout_height="219dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -54,7 +54,7 @@
         android:layout_width="210dp"
         android:layout_height="55dp"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="98dp"
         android:text="@string/btnIniciarSesion"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tbContra" />
@@ -81,4 +81,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblContra"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <CheckBox
+        android:id="@+id/checkRecuerdame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/checkRecuerdame"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tbContra" />
 </androidx.constraintlayout.widget.ConstraintLayout>

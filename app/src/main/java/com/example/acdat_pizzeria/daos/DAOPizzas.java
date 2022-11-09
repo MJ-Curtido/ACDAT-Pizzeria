@@ -1,6 +1,7 @@
 package com.example.acdat_pizzeria.daos;
 
 import com.example.acdat_pizzeria.clases.Pizza;
+import com.example.acdat_pizzeria.clases.Usuario;
 import com.example.acdat_pizzeria.enums.TipoIngrediente;
 import com.example.acdat_pizzeria.enums.TipoNombre;
 import com.example.acdat_pizzeria.enums.TipoSalsa;
@@ -54,5 +55,17 @@ public class DAOPizzas {
         }
 
         return pizza;
+    }
+
+    public Boolean existeFavorita(Usuario usuario) {
+        Boolean existe = false;
+
+        for (int i = 0; i < falsaBD.size() && !existe; i++) {
+            if (falsaBD.get(i).isFavorita() && falsaBD.get(i).getUsuario() == usuario) {
+                existe = true;
+            }
+        }
+
+        return existe;
     }
 }

@@ -1,11 +1,36 @@
 <resources>
     <string name="app_name">ACDAT-Pizzeria</string>
+
+    <!--Página de inicio de sesión-->
     <string name="lblUsuario">Usuario:</string>
     <string name="lblContra">Contraseña:</string>
     <string name="btnIniciarSesion">Iniciar Sesión</string>
     <string name="btnRegistrarse">Registrarse</string>
     <string name="tbUsuario">Escriba su nombre de usuario</string>
     <string name="tbContra">Escriba su contraseña</string>
+    <string name="checkRecuerdame">Recuerdame.</string>
+
+    <!--Página de registro-->
     <string name="lblContraRegistro">Repetir contraseña:</string>
     <string name="tbContraRegistro">Repita su contraseña</string>
+
+    <!--Página principal-->
+    <string name="btnWeb">WEB</string>
+    <string name="btnPedir">Pedir</string>
+    <string name="btnConfig">Configuración</string>
+
+    <!--Página de configuración-->
+    <string name="lblModoOscuro">Activar o desactivar el modo oscuro en toda la app.</string>
+    <string name="btnModoOscuro">Modo oscuro</string>
+    <string name="btnCerrarSesion">Cerrar sesión</string>
+
+    <!--Página de elegir tamaño y tipo-->
+    <string name="lblTamanyo">Elija el tamaño de su pizza:</string>
+    <string name="rbtnPequenya">Pequeña</string>
+    <string name="rbtnMediana">Mediana</string>
+    <string name="rbtnFamiliar">Familiar</string>
+    <string name="rbtnMedioMetro">Medio metro</string>
+    <string name="btnFavorita">Pizza favorita</string>
+    <string name="btnPredet">Pizzas predeterminadas</string>
+    <string name="btnPers">Pizza personalizada</string>
 </resources>

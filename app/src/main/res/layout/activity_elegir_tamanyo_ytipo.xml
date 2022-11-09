@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".vista.ElegirTamanyoYTipo">
+
+    <Button
+        android:id="@+id/btnFavorita"
+        android:layout_width="210dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="111dp"
+        android:layout_marginTop="80dp"
+        android:text="@string/btnFavorita"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/grupoRbtn" />
+
+    <Button
+        android:id="@+id/btnPers"
+        android:layout_width="210dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="111dp"
+        android:layout_marginTop="42dp"
+        android:text="@string/btnPers"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnPredet" />
+
+    <Button
+        android:id="@+id/btnPredet"
+        android:layout_width="210dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="111dp"
+        android:layout_marginTop="42dp"
+        android:text="@string/btnPredet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnFavorita" />
+
+    <TextView
+        android:id="@+id/lblTamanyo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="81dp"
+        android:text="@string/lblTamanyo"
+        android:textSize="27sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/grupoRbtn"
+        android:layout_width="165dp"
+        android:layout_height="195dp"
+        android:layout_marginStart="139dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblTamanyo">
+
+        <RadioButton
+            android:id="@+id/rbtnPequenya"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rbtnPequenya"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/rbtnMediana"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rbtnMediana"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/rbtnFamiliar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rbtnFamiliar"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/rbtnMedioMetro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/rbtnMedioMetro"
+            android:textSize="20sp" />
+    </RadioGroup>
+</androidx.constraintlayout.widget.ConstraintLayout>

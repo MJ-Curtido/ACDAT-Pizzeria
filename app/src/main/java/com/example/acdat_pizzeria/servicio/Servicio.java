@@ -1,6 +1,7 @@
 package com.example.acdat_pizzeria.servicio;
 
 import com.example.acdat_pizzeria.clases.Pizza;
+import com.example.acdat_pizzeria.clases.Usuario;
 import com.example.acdat_pizzeria.daos.DAOPizzas;
 import com.example.acdat_pizzeria.daos.DAOUsuarios;
 import com.example.acdat_pizzeria.enums.TipoNombre;
@@ -29,5 +30,9 @@ public class Servicio {
 
     public Boolean anyadirUsuarioContra(String usuario, String contra) {
         return DAOUsuarios.getInstance().anyadirUsuarioContra(usuario, contra);
+    }
+
+    public Boolean existeFavorita(Usuario usuario) {
+        return DAOPizzas.getInstance().existeFavorita(usuario);
     }
 }
