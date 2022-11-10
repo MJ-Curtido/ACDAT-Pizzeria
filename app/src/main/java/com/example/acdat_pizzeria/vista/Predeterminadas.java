@@ -13,7 +13,6 @@ public class Predeterminadas extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         SharedPreferences preferencias = getSharedPreferences ("datosApp", Context.MODE_PRIVATE);
 
         if (preferencias.getBoolean("modoOscuro", false)) {
@@ -22,5 +21,7 @@ public class Predeterminadas extends AppCompatActivity {
         else {
             this.getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
+
+
     }
 }

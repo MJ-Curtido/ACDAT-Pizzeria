@@ -23,9 +23,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
-        setContentView(view);
 
         SharedPreferences preferencias = getSharedPreferences ("datosApp", Context.MODE_PRIVATE);
 
@@ -43,6 +40,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             i.putExtra("usuarioActual", usuario);
             startActivity(i);
         }
+
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
         binding.btnIniciarSesion.setOnClickListener(this);
         binding.btnRegistrarse.setOnClickListener(this);

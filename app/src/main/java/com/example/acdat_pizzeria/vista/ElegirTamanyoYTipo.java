@@ -22,13 +22,6 @@ public class ElegirTamanyoYTipo extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityElegirTamanyoYtipoBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
-        setContentView(view);
-
-        Bundle bundle = getIntent().getExtras();
-
-        usuario = (Usuario) bundle.get("usuarioActual");
 
         SharedPreferences preferencias = getSharedPreferences ("datosApp", Context.MODE_PRIVATE);
 
@@ -37,6 +30,14 @@ public class ElegirTamanyoYTipo extends AppCompatActivity implements View.OnClic
         }
         else {
             this.getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
+        binding = ActivityElegirTamanyoYtipoBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+
+        if (usuario == null) {
+            usuario = (Usuario) getIntent().getSerializableExtra("usuarioActual");
         }
 
         binding.btnFavorita.setOnClickListener(this);

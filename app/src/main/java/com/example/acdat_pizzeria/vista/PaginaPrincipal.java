@@ -24,12 +24,6 @@ public class PaginaPrincipal extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityPaginaPrincipalBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
-        setContentView(view);
-
-        //PONERLO EN TODAS LAS PAGIAS
-        usuario = (Usuario) getIntent().getSerializableExtra("usuarioActual");
 
         SharedPreferences preferencias = getSharedPreferences ("datosApp", Context.MODE_PRIVATE);
 
@@ -38,6 +32,14 @@ public class PaginaPrincipal extends AppCompatActivity implements View.OnClickLi
         }
         else {
             this.getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
+        binding = ActivityPaginaPrincipalBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+
+        if (usuario == null) {
+            usuario = (Usuario) getIntent().getSerializableExtra("usuarioActual");
         }
 
         binding.btnWeb.setOnClickListener(this);

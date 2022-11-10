@@ -21,9 +21,6 @@ public class Registro extends AppCompatActivity implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityRegistroBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
-        setContentView(view);
 
         SharedPreferences preferencias = getSharedPreferences ("datosApp", Context.MODE_PRIVATE);
 
@@ -33,6 +30,10 @@ public class Registro extends AppCompatActivity implements View.OnClickListener{
         else {
             this.getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
+
+        binding = ActivityRegistroBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
         binding.btnRegistrarseRegistro.setOnClickListener(this);
     }

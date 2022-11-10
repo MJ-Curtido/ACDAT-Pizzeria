@@ -20,13 +20,6 @@ public class Configuracion extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_configuracion);
-        binding = ActivityConfiguracionBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
-        setContentView(view);
-
-        binding.btnModoOscuro.setOnClickListener(this);
-        binding.btnCerrarSesion.setOnClickListener(this);
 
         SharedPreferences preferencias = getSharedPreferences ("datosApp", Context.MODE_PRIVATE);
 
@@ -36,6 +29,14 @@ public class Configuracion extends AppCompatActivity implements View.OnClickList
         else {
             this.getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
+
+        setContentView(R.layout.activity_configuracion);
+        binding = ActivityConfiguracionBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+
+        binding.btnModoOscuro.setOnClickListener(this);
+        binding.btnCerrarSesion.setOnClickListener(this);
 
         if (this.getDelegate().getLocalNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
             binding.btnModoOscuro.setChecked(true);
@@ -66,9 +67,9 @@ public class Configuracion extends AppCompatActivity implements View.OnClickList
                 editor.commit();
             }
             else {
-                this.getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                this.getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-                SharedPreferences preferencias = getSharedPreferences ("colorFondo", Context.MODE_PRIVATE);
+                SharedPreferences preferencias = getSharedPreferences ("datosApp", Context.MODE_PRIVATE);
 
                 SharedPreferences.Editor editor = preferencias.edit();
 
@@ -83,7 +84,7 @@ public class Configuracion extends AppCompatActivity implements View.OnClickList
                     .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            SharedPreferences preferencias = getSharedPreferences ("usuario", Context.MODE_PRIVATE);
+                            SharedPreferences preferencias = getSharedPreferences ("datosApp", Context.MODE_PRIVATE);
 
                             SharedPreferences.Editor editor = preferencias.edit();
 
