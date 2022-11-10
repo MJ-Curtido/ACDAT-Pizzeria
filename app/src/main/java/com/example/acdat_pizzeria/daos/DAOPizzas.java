@@ -5,7 +5,6 @@ import com.example.acdat_pizzeria.clases.Usuario;
 import com.example.acdat_pizzeria.enums.TipoIngrediente;
 import com.example.acdat_pizzeria.enums.TipoNombre;
 import com.example.acdat_pizzeria.enums.TipoSalsa;
-import com.example.acdat_pizzeria.enums.TipoTamanyo;
 
 import java.util.ArrayList;
 
@@ -25,7 +24,7 @@ public class DAOPizzas {
 
         ArrayList<TipoIngrediente> ingredientes2 = new ArrayList<TipoIngrediente>();
         ingredientes2.add(TipoIngrediente.ANCHOA);
-        ingredientes2.add(TipoIngrediente.PIÑA);
+        ingredientes2.add(TipoIngrediente.PINYA);
 
         ArrayList<TipoIngrediente> ingredientes3 = new ArrayList<TipoIngrediente>();
         ingredientes3.add(TipoIngrediente.ACEITUNAS_NEGRAS);
@@ -61,11 +60,47 @@ public class DAOPizzas {
         Boolean existe = false;
 
         for (int i = 0; i < falsaBD.size() && !existe; i++) {
-            if (falsaBD.get(i).isFavorita() && falsaBD.get(i).getUsuario() == usuario) {
+            if (falsaBD.get(i).isFavorita() && falsaBD.get(i).getUsuario().equals(usuario)) {
                 existe = true;
             }
         }
 
         return existe;
+    }
+
+    public Pizza obtenerPizzaFavorita(Usuario usuario) {
+        Pizza pizza = null;
+
+        for (int i = 0; i < falsaBD.size() && pizza == null; i++) {
+            if (falsaBD.get(i).isFavorita() && falsaBD.get(i).getUsuario().equals(usuario)) {
+                pizza = falsaBD.get(i);
+            }
+        }
+
+        return new Pizza(pizza);
+    }
+
+    public ArrayList<Pizza> obtenerPizzasPred() {
+        ArrayList<Pizza> pizzasPred = new ArrayList<Pizza>();
+
+        for (int i = 0; i < falsaBD.size(); i++) {
+            if (falsaBD.get(i).getNombre() != TipoNombre.PERSONALIZADA) {
+                pizzasPred.add(new Pizza(falsaBD.get(i)));
+            }
+        }
+        
+        return pizzasPred;
+    }
+
+    public void quitarFavorita() {
+        for (int i = 0; i < falsaBD.size(); i++) {
+            if (falsaBD.get(i).isFavorita()) {
+                falsaBD.get(i).setFavorita(false);
+            }
+        }
+    }
+
+    public void anyadirPizza(Pizza pizza) {
+        falsaBD.add(pizza);
     }
 }

@@ -6,10 +6,11 @@ import com.example.acdat_pizzeria.enums.TipoSalsa;
 import com.example.acdat_pizzeria.enums.TipoTamanyo;
 import com.example.acdat_pizzeria.servicio.Servicio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Pizza {
+public class Pizza implements Serializable {
     private static Integer idTemp = 0;
     private Integer id;
     private TipoTamanyo tamanyo;
@@ -21,26 +22,25 @@ public class Pizza {
     private Integer precio;
 
     public Pizza() {
+
+    }
+
+    public Pizza(Pizza pizza) {
+        this.tamanyo = pizza.getTamanyo();
+        this.salsa = pizza.getSalsa();
+        this.ingredientes = pizza.getIngredientes();
+        this.favorita = pizza.isFavorita();
+        this.usuario = pizza.getUsuario();
+        this.nombre = pizza.getNombre();
+        this.calcularPrecio();
+        this.id = idTemp;
+        idTemp++;
     }
 
     public Pizza(TipoTamanyo tamanyo, TipoSalsa salsa, ArrayList<TipoIngrediente> ingredientes, Usuario usuario) {
         this.tamanyo = tamanyo;
         this.salsa = salsa;
         this.ingredientes = ingredientes;
-        this.favorita = false;
-        this.usuario = usuario;
-        this.nombre = TipoNombre.PERSONALIZADA;
-        this.calcularPrecio();
-        this.id = idTemp;
-        idTemp++;
-    }
-
-    public Pizza(TipoTamanyo tamanyo, TipoNombre nombre, Usuario usuario) {
-        Pizza pizzaTemp = Servicio.getInstance().getPizzaPred(nombre);
-
-        this.tamanyo = tamanyo;
-        this.salsa = pizzaTemp.getSalsa();
-        this.ingredientes = pizzaTemp.getIngredientes();
         this.favorita = false;
         this.usuario = usuario;
         this.nombre = TipoNombre.PERSONALIZADA;
@@ -60,7 +60,7 @@ public class Pizza {
         idTemp++;
     }
 
-    private void calcularPrecio() {
+    public void calcularPrecio() {
         if (this.tamanyo == TipoTamanyo.PEQUEÑA) {
             this.precio = 3;
         }
@@ -78,9 +78,7 @@ public class Pizza {
             this.precio += 2;
         }
 
-        if (this.ingredientes != null) {
-            this.precio += this.ingredientes.size();
-        }
+        this.precio += this.ingredientes.size();
     }
 
     public void setNombre(TipoNombre nombre) {
@@ -154,6 +152,16 @@ public class Pizza {
 
     @Override
     public String toString() {
-        return "Pizza -->" + "id: " + id + ", tamaño: " + tamanyo + ", salsa: " + salsa + ", ingredientes: " + ingredientes;
+        StringBuilder cadena = new StringBuilder();
+        StringBuilder cadenaIngredientes = new StringBuilder();
+
+        cadenaIngredientes.append(this.ingredientes.get(0).getTxt());
+        for (int i = 1; i < this.ingredientes.size(); i++) {
+            cadenaIngredientes.append("\n\t\t" + this.ingredientes.get(i).getTxt());
+        }
+
+        cadena.append(this.nombre.getTxt() + "-->\n\tTamaño:\n\t\t" + this.tamanyo.getTxt() + ".\n\tSalsa:\n\t\t" + this.salsa.getTxt() + ".\n\tIngredientes:\n\t\t" + cadenaIngredientes + ".\n\nTOTAL:" + this.precio + "€.");
+
+        return cadena.toString();
     }
 }

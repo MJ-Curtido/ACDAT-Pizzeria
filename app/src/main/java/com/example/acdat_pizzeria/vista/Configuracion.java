@@ -12,10 +12,12 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.acdat_pizzeria.R;
+import com.example.acdat_pizzeria.clases.Usuario;
 import com.example.acdat_pizzeria.databinding.ActivityConfiguracionBinding;
 
 public class Configuracion extends AppCompatActivity implements View.OnClickListener {
     ActivityConfiguracionBinding binding;
+    Usuario usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +46,14 @@ public class Configuracion extends AppCompatActivity implements View.OnClickList
         else {
             binding.btnModoOscuro.setChecked(false);
         }
+
+        usuario = (Usuario) getIntent().getSerializableExtra("usuarioActual");
     }
 
     @Override
     public void onBackPressed() {
         Intent i = new Intent(Configuracion.this, PaginaPrincipal.class);
+        i.putExtra("usuarioActual", usuario);
         startActivity(i);
     }
 

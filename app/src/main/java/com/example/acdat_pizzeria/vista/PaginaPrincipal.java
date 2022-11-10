@@ -84,6 +84,7 @@ public class PaginaPrincipal extends AppCompatActivity implements View.OnClickLi
         }
         else {
             Intent i = new Intent(PaginaPrincipal.this, Configuracion.class);
+            i.putExtra("usuarioActual", usuario);
             startActivity(i);
         }
     }

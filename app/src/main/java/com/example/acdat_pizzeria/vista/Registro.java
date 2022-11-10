@@ -50,7 +50,6 @@ public class Registro extends AppCompatActivity implements View.OnClickListener{
 
                     Intent i = new Intent(Registro.this, MainActivity.class);
                     startActivity(i);
-                    finish();
                 }
                 else {
                     Toast.makeText(this, "El usuario introducido ya existe.", Toast.LENGTH_SHORT).show();

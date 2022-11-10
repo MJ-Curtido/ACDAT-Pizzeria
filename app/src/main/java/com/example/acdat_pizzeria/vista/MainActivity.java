@@ -71,46 +71,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         builder.show();
     }
 
-    public void comprobarInicioSesion() {
-        if (Servicio.getInstance().comprobarUsuarioContra(binding.tbUsuario.getText().toString(), binding.tbContra.getText().toString())) {
-            Usuario usuario = new Usuario(binding.tbUsuario.getText().toString(), binding.tbContra.getText().toString());
-
-            Toast.makeText(this, "Ha iniciado sesión correctamente.", Toast.LENGTH_SHORT).show();
-
-            if (binding.checkRecuerdame.isChecked()) {
-                SharedPreferences preferencias = getSharedPreferences ("datosApp", Context.MODE_PRIVATE);
-
-                SharedPreferences.Editor editor = preferencias.edit();
-
-                editor.putString("nombreUsuario", binding.tbUsuario.getText().toString());
-                editor.putString("contraUsuario", binding.tbContra.getText().toString());
-
-                editor.commit();
-            }
-
-            Intent i = new Intent(MainActivity.this, PaginaPrincipal.class);
-            i.putExtra("usuarioActual", usuario);
-            startActivity(i);
-        }
-        else {
-            Toast.makeText(this, "Usuario o contraseña introducidos incorrectos.", Toast.LENGTH_SHORT).show();
-
-            binding.tbContra.setText("");
-        }
-    }
-
-    public void irARegistro() {
-        Intent i = new Intent(MainActivity.this, Registro.class);
-        startActivity(i);
-    }
-
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btnIniciarSesion) {
-            this.comprobarInicioSesion();
+            if (Servicio.getInstance().comprobarUsuarioContra(binding.tbUsuario.getText().toString(), binding.tbContra.getText().toString())) {
+                Usuario usuario = new Usuario(binding.tbUsuario.getText().toString(), binding.tbContra.getText().toString());
+
+                Toast.makeText(this, "Ha iniciado sesión correctamente.", Toast.LENGTH_SHORT).show();
+
+                if (binding.checkRecuerdame.isChecked()) {
+                    SharedPreferences preferencias = getSharedPreferences ("datosApp", Context.MODE_PRIVATE);
+
+                    SharedPreferences.Editor editor = preferencias.edit();
+
+                    editor.putString("nombreUsuario", binding.tbUsuario.getText().toString());
+                    editor.putString("contraUsuario", binding.tbContra.getText().toString());
+
+                    editor.commit();
+                }
+
+                Intent i = new Intent(MainActivity.this, PaginaPrincipal.class);
+                i.putExtra("usuarioActual", usuario);
+                startActivity(i);
+            }
+            else {
+                Toast.makeText(this, "Usuario o contraseña introducidos incorrectos.", Toast.LENGTH_SHORT).show();
+
+                binding.tbContra.setText("");
+            }
         }
         else {
-            this.irARegistro();
+            Intent i = new Intent(MainActivity.this, Registro.class);
+            startActivity(i);
         }
     }
 }

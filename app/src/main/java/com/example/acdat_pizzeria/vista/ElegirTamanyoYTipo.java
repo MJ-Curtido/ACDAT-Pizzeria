@@ -11,8 +11,11 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.acdat_pizzeria.R;
+import com.example.acdat_pizzeria.clases.Pizza;
 import com.example.acdat_pizzeria.clases.Usuario;
 import com.example.acdat_pizzeria.databinding.ActivityElegirTamanyoYtipoBinding;
+import com.example.acdat_pizzeria.enums.TipoNombre;
+import com.example.acdat_pizzeria.enums.TipoTamanyo;
 import com.example.acdat_pizzeria.servicio.Servicio;
 
 public class ElegirTamanyoYTipo extends AppCompatActivity implements View.OnClickListener {
@@ -36,9 +39,7 @@ public class ElegirTamanyoYTipo extends AppCompatActivity implements View.OnClic
         View view = binding.getRoot();
         setContentView(view);
 
-        if (usuario == null) {
-            usuario = (Usuario) getIntent().getSerializableExtra("usuarioActual");
-        }
+        usuario = (Usuario) getIntent().getSerializableExtra("usuarioActual");
 
         binding.btnFavorita.setOnClickListener(this);
         binding.btnPredet.setOnClickListener(this);
@@ -48,15 +49,38 @@ public class ElegirTamanyoYTipo extends AppCompatActivity implements View.OnClic
     @Override
     public void onBackPressed() {
         Intent i = new Intent(ElegirTamanyoYTipo.this, PaginaPrincipal.class);
+        i.putExtra("usuarioActual", usuario);
         startActivity(i);
     }
 
     @Override
     public void onClick(View view) {
+        TipoTamanyo tamanyo;
+
+        if (binding.rbtnPequenya.isChecked()) {
+            tamanyo = TipoTamanyo.PEQUEÑA;
+        }
+        else if (binding.rbtnMediana.isChecked()) {
+            tamanyo = TipoTamanyo.MEDIANA;
+        }
+        else if (binding.rbtnFamiliar.isChecked()) {
+            tamanyo = TipoTamanyo.FAMILIAR;
+        }
+        else {
+            tamanyo = TipoTamanyo.MEDIO_METRO;
+        }
+
         if (view.getId() == R.id.btnFavorita) {
             if (Servicio.getInstance().existeFavorita(usuario)) {
-                Intent i = new Intent(ElegirTamanyoYTipo.this, Favorita.class);
+                Pizza pizza = Servicio.getInstance().obtenerPizzaFavorita(usuario);
+                pizza.setTamanyo(tamanyo);
+                pizza.calcularPrecio();
+                pizza.setNombre(TipoNombre.PERSONALIZADA);
+
+                Intent i = new Intent(ElegirTamanyoYTipo.this, Pedir.class);
                 i.putExtra("usuarioActual", usuario);
+                i.putExtra("tamanyoPizza", tamanyo);
+                i.putExtra("pizzaPedido", pizza);
                 startActivity(i);
             }
             else {
@@ -66,11 +90,13 @@ public class ElegirTamanyoYTipo extends AppCompatActivity implements View.OnClic
         else if (view.getId() == R.id.btnPredet) {
             Intent i = new Intent(ElegirTamanyoYTipo.this, Predeterminadas.class);
             i.putExtra("usuarioActual", usuario);
+            i.putExtra("tamanyoPizza", tamanyo);
             startActivity(i);
         }
         else {
             Intent i = new Intent(ElegirTamanyoYTipo.this, Personalizada.class);
             i.putExtra("usuarioActual", usuario);
+            i.putExtra("tamanyoPizza", tamanyo);
             startActivity(i);
         }
     }

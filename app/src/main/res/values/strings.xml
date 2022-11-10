@@ -33,4 +33,35 @@
     <string name="btnFavorita">Pizza favorita</string>
     <string name="btnPredet">Pizzas predeterminadas</string>
     <string name="btnPers">Pizza personalizada</string>
+
+    <!--Página de pizza personalizada-->
+    <string name="lblSalsa">Elige salsa (2€):</string>
+    <string name="lblIngredientes">Elige Ingredientes (1€ cada ingrediente):</string>
+    <string name="rbtnSinSalsa">Sin salsa.</string>
+    <string name="rbtnBbq">Salsa barbacoa.</string>
+    <string name="rbtnCarbonara">Salsa carbonara.</string>
+    <string name="rbtnYogur">Salsa yogur.</string>
+    <string name="rbtnPicante">Salsa picante.</string>
+    <string name="cbCebolla">Cebolla.</string>
+    <string name="cbBacon">Bacon.</string>
+    <string name="cbPollo">Pollo.</string>
+    <string name="cbTernera">Ternera.</string>
+    <string name="cbPimiento">Pimiento.</string>
+    <string name="cbChampi">Champiñones.</string>
+    <string name="cbAceitunas">Aceitunas negras.</string>
+    <string name="cbAtun">Atún.</string>
+    <string name="cbPeperoni">Peperoni.</string>
+    <string name="cbJamon">Jamon York.</string>
+    <string name="cbPinya">Piña.</string>
+    <string name="cbAnchoa">Anchoa.</string>
+    <string name="btnContinuar">Continuar</string>
+
+    <!--Página de pedir-->
+    <string name="lblPedidoTitulo">PEDIDO</string>
+    <string name="txtPedido">PEDIDO</string>
+    <string name="btnConfirmar">Confirmar pedido</string>
+    <string name="cbFav">Añadir a favorita.</string>
+
+    <!--Página de pedido realizado-->
+    <string name="lblPedidoRealizado">PEDIDO REALIZADO</string>
 </resources>

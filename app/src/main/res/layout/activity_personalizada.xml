@@ -6,4 +6,201 @@
     android:layout_height="match_parent"
     tools:context=".vista.Personalizada">
 
+    <Button
+        android:id="@+id/btnContinuar"
+        android:layout_width="210dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="69dp"
+        android:layout_marginEnd="100dp"
+        android:text="@string/btnContinuar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbPinya" />
+
+    <TextView
+        android:id="@+id/lblIngredientes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="62dp"
+        android:layout_marginEnd="60dp"
+        android:text="@string/lblIngredientes"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/grupoRbtnSalsa" />
+
+    <CheckBox
+        android:id="@+id/cbPimiento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/cbPimiento"
+        app:layout_constraintEnd_toStartOf="@+id/cbChampi"
+        app:layout_constraintTop_toBottomOf="@+id/cbBacon" />
+
+    <CheckBox
+        android:id="@+id/cbAtun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:text="@string/cbAtun"
+        app:layout_constraintEnd_toStartOf="@+id/cbPeperoni"
+        app:layout_constraintTop_toBottomOf="@+id/cbPimiento" />
+
+    <CheckBox
+        android:id="@+id/cbCebolla"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="71dp"
+        android:text="@string/cbCebolla"
+        app:layout_constraintEnd_toStartOf="@+id/cbBacon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblIngredientes" />
+
+    <CheckBox
+        android:id="@+id/cbJamon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:text="@string/cbJamon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbAceitunas" />
+
+    <CheckBox
+        android:id="@+id/cbTernera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:text="@string/cbTernera"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbCebolla" />
+
+    <CheckBox
+        android:id="@+id/cbAceitunas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:text="@string/cbAceitunas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbTernera" />
+
+    <CheckBox
+        android:id="@+id/cbPinya"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="49dp"
+        android:text="@string/cbPinya"
+        app:layout_constraintEnd_toStartOf="@+id/cbAnchoa"
+        app:layout_constraintTop_toBottomOf="@+id/cbAtun" />
+
+    <CheckBox
+        android:id="@+id/cbPollo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="73dp"
+        android:text="@string/cbPollo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblIngredientes" />
+
+    <CheckBox
+        android:id="@+id/cbPeperoni"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="49dp"
+        android:text="@string/cbPeperoni"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbChampi" />
+
+    <CheckBox
+        android:id="@+id/cbChampi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="19dp"
+        android:text="@string/cbChampi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbPollo" />
+
+    <CheckBox
+        android:id="@+id/cbAnchoa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="58dp"
+        android:text="@string/cbAnchoa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbPeperoni" />
+
+    <CheckBox
+        android:id="@+id/cbBacon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="36dp"
+        android:text="@string/cbBacon"
+        app:layout_constraintEnd_toStartOf="@+id/cbPollo"
+        app:layout_constraintTop_toBottomOf="@+id/lblIngredientes" />
+
+    <RadioGroup
+        android:id="@+id/grupoRbtnSalsa"
+        android:layout_width="149dp"
+        android:layout_height="235dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="150dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblSalsa">
+
+        <RadioButton
+            android:id="@+id/rbtnSinSalsa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/rbtnSinSalsa" />
+
+        <RadioButton
+            android:id="@+id/rbtnBbq"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rbtnBbq" />
+
+        <RadioButton
+            android:id="@+id/rbtnCarbonara"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rbtnCarbonara" />
+
+        <RadioButton
+            android:id="@+id/rbtnYogur"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rbtnYogur" />
+
+        <RadioButton
+            android:id="@+id/rbtnPicante"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rbtnPicante"
+            tools:ignore="TouchTargetSizeCheck" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/lblSalsa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="150dp"
+        android:text="@string/lblSalsa"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
