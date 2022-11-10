@@ -27,9 +27,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         View view = binding.getRoot();
         setContentView(view);
 
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        SharedPreferences preferencias = getSharedPreferences ("datosApp", Context.MODE_PRIVATE);
 
-        SharedPreferences preferencias = getSharedPreferences ("usuario", Context.MODE_PRIVATE);
+        if (preferencias.getBoolean("modoOscuro", false)) {
+            this.getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+        else {
+            this.getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
 
         if (!preferencias.getString("nombreUsuario", "").equals("")) {
             Usuario usuario = new Usuario(preferencias.getString("nombreUsuario", ""), preferencias.getString("contraUsuario", ""));
@@ -72,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this, "Ha iniciado sesión correctamente.", Toast.LENGTH_SHORT).show();
 
             if (binding.checkRecuerdame.isChecked()) {
-                SharedPreferences preferencias = getSharedPreferences ("usuario", Context.MODE_PRIVATE);
+                SharedPreferences preferencias = getSharedPreferences ("datosApp", Context.MODE_PRIVATE);
 
                 SharedPreferences.Editor editor = preferencias.edit();
 

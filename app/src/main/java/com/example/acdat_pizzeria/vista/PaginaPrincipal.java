@@ -2,9 +2,12 @@ package com.example.acdat_pizzeria.vista;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -25,9 +28,17 @@ public class PaginaPrincipal extends AppCompatActivity implements View.OnClickLi
         View view = binding.getRoot();
         setContentView(view);
 
-        Bundle bundle = getIntent().getExtras();
+        //PONERLO EN TODAS LAS PAGIAS
+        usuario = (Usuario) getIntent().getSerializableExtra("usuarioActual");
 
-        usuario = (Usuario) bundle.get("usuarioActual");
+        SharedPreferences preferencias = getSharedPreferences ("datosApp", Context.MODE_PRIVATE);
+
+        if (preferencias.getBoolean("modoOscuro", false)) {
+            this.getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+        else {
+            this.getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
 
         binding.btnWeb.setOnClickListener(this);
         binding.btnPedir.setOnClickListener(this);

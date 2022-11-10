@@ -28,7 +28,21 @@ public class Configuracion extends AppCompatActivity implements View.OnClickList
         binding.btnModoOscuro.setOnClickListener(this);
         binding.btnCerrarSesion.setOnClickListener(this);
 
-        binding.btnModoOscuro.setChecked(true);
+        SharedPreferences preferencias = getSharedPreferences ("datosApp", Context.MODE_PRIVATE);
+
+        if (preferencias.getBoolean("modoOscuro", false)) {
+            this.getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+        else {
+            this.getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
+        if (this.getDelegate().getLocalNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+            binding.btnModoOscuro.setChecked(true);
+        }
+        else {
+            binding.btnModoOscuro.setChecked(false);
+        }
     }
 
     @Override
@@ -41,10 +55,26 @@ public class Configuracion extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         if (view.getId() == R.id.btnModoOscuro) {
             if (binding.btnModoOscuro.isChecked()) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                this.getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
+                SharedPreferences preferencias = getSharedPreferences ("datosApp", Context.MODE_PRIVATE);
+
+                SharedPreferences.Editor editor = preferencias.edit();
+
+                editor.putBoolean("modoOscuro", true);
+
+                editor.commit();
             }
             else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                this.getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
+                SharedPreferences preferencias = getSharedPreferences ("colorFondo", Context.MODE_PRIVATE);
+
+                SharedPreferences.Editor editor = preferencias.edit();
+
+                editor.putBoolean("modoOscuro", false);
+
+                editor.commit();
             }
         }
         else {

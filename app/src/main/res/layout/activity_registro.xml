@@ -10,11 +10,13 @@
         android:id="@+id/tbContraRegistroRepetir"
         android:layout_width="302dp"
         android:layout_height="49dp"
-        android:layout_marginStart="65dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="64dp"
         android:ems="10"
         android:hint="@string/tbContraRegistro"
         android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblContra5"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
@@ -24,8 +26,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="65dp"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="87dp"
+        android:layout_marginEnd="246dp"
         android:text="@string/lblContraRegistro"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tbContraRegistro" />
 
@@ -35,9 +39,11 @@
         android:layout_height="50dp"
         android:layout_marginStart="64dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="64dp"
         android:ems="10"
         android:hint="@string/tbUsuario"
         android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblUsuarioRegistro"
         tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
@@ -48,7 +54,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="104dp"
+        android:layout_marginEnd="317dp"
         android:text="@string/lblUsuario"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -56,9 +64,11 @@
         android:id="@+id/btnRegistrarseRegistro"
         android:layout_width="210dp"
         android:layout_height="55dp"
-        android:layout_marginStart="115dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="87dp"
+        android:layout_marginEnd="100dp"
         android:text="@string/btnRegistrarse"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tbContraRegistroRepetir" />
 
@@ -67,10 +77,12 @@
         android:layout_width="302dp"
         android:layout_height="49dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="64dp"
         android:ems="10"
         android:hint="@string/tbContra"
         android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblContraRegistro"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
@@ -81,7 +93,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="87dp"
+        android:layout_marginEnd="293dp"
         android:text="@string/lblContra"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tbUsuarioRegistro" />
 

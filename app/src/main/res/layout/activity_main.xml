@@ -12,6 +12,8 @@
         android:layout_height="219dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/pizzachulita" />
@@ -22,9 +24,11 @@
         android:layout_height="50dp"
         android:layout_marginStart="64dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="64dp"
         android:ems="10"
         android:hint="@string/tbUsuario"
         android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblUsuario"
         tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
@@ -35,7 +39,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="76dp"
+        android:layout_marginEnd="317dp"
         android:text="@string/lblUsuario"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -45,7 +51,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="44dp"
+        android:layout_marginEnd="293dp"
         android:text="@string/lblContra"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tbUsuario" />
 
@@ -55,7 +63,9 @@
         android:layout_height="55dp"
         android:layout_marginStart="100dp"
         android:layout_marginTop="98dp"
+        android:layout_marginEnd="100dp"
         android:text="@string/btnIniciarSesion"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tbContra" />
 
@@ -65,7 +75,9 @@
         android:layout_height="55dp"
         android:layout_marginStart="100dp"
         android:layout_marginTop="25dp"
+        android:layout_marginEnd="100dp"
         android:text="@string/btnRegistrarse"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnIniciarSesion" />
 
@@ -74,10 +86,12 @@
         android:layout_width="302dp"
         android:layout_height="49dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="64dp"
         android:ems="10"
         android:hint="@string/tbContra"
         android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblContra"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
@@ -88,7 +102,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="63dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="254dp"
         android:text="@string/checkRecuerdame"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tbContra" />
 </androidx.constraintlayout.widget.ConstraintLayout>

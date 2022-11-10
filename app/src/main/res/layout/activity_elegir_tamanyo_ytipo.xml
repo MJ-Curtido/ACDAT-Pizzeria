@@ -10,9 +10,11 @@
         android:id="@+id/btnFavorita"
         android:layout_width="210dp"
         android:layout_height="55dp"
-        android:layout_marginStart="111dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="80dp"
+        android:layout_marginEnd="100dp"
         android:text="@string/btnFavorita"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/grupoRbtn" />
 
@@ -20,9 +22,11 @@
         android:id="@+id/btnPers"
         android:layout_width="210dp"
         android:layout_height="55dp"
-        android:layout_marginStart="111dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="42dp"
+        android:layout_marginEnd="100dp"
         android:text="@string/btnPers"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnPredet" />
 
@@ -30,9 +34,11 @@
         android:id="@+id/btnPredet"
         android:layout_width="210dp"
         android:layout_height="55dp"
-        android:layout_marginStart="111dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="42dp"
+        android:layout_marginEnd="100dp"
         android:text="@string/btnPredet"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnFavorita" />
 
@@ -42,8 +48,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
         android:layout_marginTop="81dp"
+        android:layout_marginEnd="52dp"
         android:text="@string/lblTamanyo"
         android:textSize="27sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,6 +61,8 @@
         android:layout_height="195dp"
         android:layout_marginStart="139dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="139dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblTamanyo">
 
