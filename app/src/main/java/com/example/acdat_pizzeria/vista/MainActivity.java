@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (!preferencias.getString("nombreUsuario", "").equals("")) {
             Usuario usuario = new Usuario(preferencias.getString("nombreUsuario", ""), preferencias.getString("contraUsuario", ""));
+            Toast.makeText(this, "Se ha iniciado sesión automáticamente.", Toast.LENGTH_SHORT).show();
 
             Intent i = new Intent(MainActivity.this, PaginaPrincipal.class);
             i.putExtra("usuarioActual", usuario);
