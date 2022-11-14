@@ -45,6 +45,7 @@ public class PaginaPrincipal extends AppCompatActivity implements View.OnClickLi
         binding.btnWeb.setOnClickListener(this);
         binding.btnPedir.setOnClickListener(this);
         binding.btnConfig.setOnClickListener(this);
+        binding.btnLlamar.setOnClickListener(this);
     }
 
     @Override
@@ -82,9 +83,14 @@ public class PaginaPrincipal extends AppCompatActivity implements View.OnClickLi
             i.putExtra("usuarioActual", usuario);
             startActivity(i);
         }
-        else {
+        else if (view.getId() == R.id.btnConfig) {
             Intent i = new Intent(PaginaPrincipal.this, Configuracion.class);
             i.putExtra("usuarioActual", usuario);
+            startActivity(i);
+        }
+        else {
+            Intent i = new Intent(Intent.ACTION_DIAL);
+            i.setData(Uri.parse("tel:610925034"));
             startActivity(i);
         }
     }

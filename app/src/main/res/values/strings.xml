@@ -18,6 +18,7 @@
     <string name="btnWeb">WEB</string>
     <string name="btnPedir">Pedir</string>
     <string name="btnConfig">Configuración</string>
+    <string name="btnLlamar">Llamar</string>
 
     <!--Página de configuración-->
     <string name="lblModoOscuro">Activar o desactivar el modo oscuro en toda la app.</string>
