@@ -81,6 +81,14 @@ public class Pizza implements Serializable {
         this.precio += this.ingredientes.size();
     }
 
+    public Integer getPrecio() {
+        return this.precio;
+    }
+
+    public void setPrecio(Integer precio) {
+        this.precio = precio;
+    }
+
     public void setNombre(TipoNombre nombre) {
         this.nombre = nombre;
     }

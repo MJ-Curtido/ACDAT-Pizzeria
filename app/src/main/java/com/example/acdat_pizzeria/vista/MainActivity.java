@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import com.example.acdat_pizzeria.R;
 import com.example.acdat_pizzeria.clases.Usuario;
 import com.example.acdat_pizzeria.databinding.ActivityMainBinding;
+import com.example.acdat_pizzeria.db.DbHelper;
 import com.example.acdat_pizzeria.servicio.Servicio;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -48,6 +50,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         binding.btnIniciarSesion.setOnClickListener(this);
         binding.btnRegistrarse.setOnClickListener(this);
+
+        DbHelper bbdd = new DbHelper(MainActivity.this);
+        SQLiteDatabase sqLite = bbdd.getWritableDatabase();
+
+        if (sqLite!=null){
+            System.out.println("Se creó la BBDD.");
+        } else {
+            System.out.println("Error al crear la BBDD.");
+        }
     }
 
     @Override
