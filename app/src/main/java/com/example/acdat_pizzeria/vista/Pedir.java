@@ -57,7 +57,7 @@ public class Pedir extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if (binding.cbFav.isChecked()) {
-            Servicio.getInstance().quitarFavorita();
+            Servicio.getInstance().quitarFavorita(this.usuario);
 
             pizza.setFavorita(true);
         }

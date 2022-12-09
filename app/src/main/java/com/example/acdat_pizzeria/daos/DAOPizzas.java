@@ -45,17 +45,6 @@ public class DAOPizzas {
         return dao;
     }
 
-    public Pizza getPizzaPred(TipoNombre nombre) {
-        Pizza pizza = new Pizza();
-        for (int i = 0; i < falsaBD.size(); i++) {
-            if (falsaBD.get(i).getNombre() == nombre) {
-                pizza = falsaBD.get(i);
-            }
-        }
-
-        return pizza;
-    }
-
     public Boolean existeFavorita(Usuario usuario) {
         Boolean existe = false;
 
@@ -92,9 +81,9 @@ public class DAOPizzas {
         return pizzasPred;
     }
 
-    public void quitarFavorita() {
+    public void quitarFavorita(Usuario usuario) {
         for (int i = 0; i < falsaBD.size(); i++) {
-            if (falsaBD.get(i).isFavorita()) {
+            if (falsaBD.get(i).isFavorita() && falsaBD.get(i).getUsuario().equals(usuario)) {
                 falsaBD.get(i).setFavorita(false);
             }
         }

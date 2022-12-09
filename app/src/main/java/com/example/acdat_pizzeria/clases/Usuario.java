@@ -12,6 +12,10 @@ public class Usuario implements Serializable {
         this.contrasenya = contrasenya;
     }
 
+    public Usuario() {
+
+    }
+
     public void setNomUsuario(String nomUsuario) {
         this.nomUsuario = nomUsuario;
     }
