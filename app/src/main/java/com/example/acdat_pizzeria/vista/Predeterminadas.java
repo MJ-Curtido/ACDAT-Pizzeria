@@ -3,6 +3,7 @@ package com.example.acdat_pizzeria.vista;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.ListActivity;
 import android.content.Context;
@@ -14,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 
+import com.example.acdat_pizzeria.R;
 import com.example.acdat_pizzeria.clases.Pizza;
 import com.example.acdat_pizzeria.clases.Usuario;
 import com.example.acdat_pizzeria.databinding.ActivityPredeterminadasBinding;
@@ -28,6 +30,8 @@ public class Predeterminadas extends AppCompatActivity {
     ArrayList<Pizza> pizzasPred;
     Usuario usuario;
     TipoTamanyo tamanyo;
+    AdaptadorDatos adaptadorDatos;
+    LinearLayoutManager linearLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +62,7 @@ public class Predeterminadas extends AppCompatActivity {
         }
 
         ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, pizzasPredNom);
-
+        /*
         binding.listaPizzaPred.setAdapter(adaptador);
 
         binding.listaPizzaPred.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -77,6 +81,15 @@ public class Predeterminadas extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        */
+        linearLayoutManager = new LinearLayoutManager(Predeterminadas.this);
+        binding.rVPizza.setLayoutManager(linearLayoutManager);
+        adaptadorDatos = new AdaptadorDatos(Predeterminadas.this);
+        binding.rVPizza.setAdapter(adaptadorDatos);
+
+        for (int i = 0; i < pizzasPred.size(); i++) {
+            adaptadorDatos.add(new ItemLista(getDrawable(R.drawable.pizza), pizzasPred.get(i).getNombre().getTxt()), usuario, tamanyo);
+        }
     }
 
     @Override
