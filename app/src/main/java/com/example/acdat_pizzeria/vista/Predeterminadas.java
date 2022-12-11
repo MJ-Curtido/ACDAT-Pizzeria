@@ -49,7 +49,7 @@ public class Predeterminadas extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        pizzasPred = Servicio.getInstance().obtenerPizzasPred();
+        pizzasPred = Servicio.getInstance().obtenerPizzasPred(Predeterminadas.this);
 
         ArrayList<String> pizzasPredNom = new ArrayList<>();
 

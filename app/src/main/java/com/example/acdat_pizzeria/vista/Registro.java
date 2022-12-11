@@ -45,7 +45,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener{
         }
         else {
             if (binding.tbContraRegistroRepetir.getText().toString().equals(binding.tbContraRegistro.getText().toString())) {
-                if (Servicio.getInstance().anyadirUsuarioContra(binding.tbUsuarioRegistro.getText().toString(), binding.tbContraRegistro.getText().toString())) {
+                if (Servicio.getInstance().anyadirUsuarioContra(Registro.this, binding.tbUsuarioRegistro.getText().toString(), binding.tbContraRegistro.getText().toString())) {
                     Toast.makeText(this, "Se ha registrado correctamente.", Toast.LENGTH_SHORT).show();
 
                     Intent i = new Intent(Registro.this, MainActivity.class);

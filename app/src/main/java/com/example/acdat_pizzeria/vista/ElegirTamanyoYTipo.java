@@ -71,8 +71,8 @@ public class ElegirTamanyoYTipo extends AppCompatActivity implements View.OnClic
         }
 
         if (view.getId() == R.id.btnFavorita) {
-            if (Servicio.getInstance().existeFavorita(usuario)) {
-                Pizza pizza = Servicio.getInstance().obtenerPizzaFavorita(usuario);
+            if (Servicio.getInstance().existeFavorita(ElegirTamanyoYTipo.this, usuario)) {
+                Pizza pizza = Servicio.getInstance().obtenerPizzaFavorita(ElegirTamanyoYTipo.this, usuario);
                 pizza.setTamanyo(tamanyo);
                 pizza.calcularPrecio();
                 pizza.setNombre(TipoNombre.PERSONALIZADA);

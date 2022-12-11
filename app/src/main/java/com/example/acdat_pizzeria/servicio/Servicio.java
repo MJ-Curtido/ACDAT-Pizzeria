@@ -1,5 +1,7 @@
 package com.example.acdat_pizzeria.servicio;
 
+import android.content.Context;
+
 import com.example.acdat_pizzeria.clases.Pizza;
 import com.example.acdat_pizzeria.clases.Usuario;
 import com.example.acdat_pizzeria.daos.DAOPizzas;
@@ -23,13 +25,13 @@ public class Servicio {
         return servicio;
     }
 
-    public Boolean comprobarUsuarioContra(String usuario, String contra) {
-        DbHelper db = new DbHelper(null);
+    public Boolean comprobarUsuarioContra(Context context, String usuario, String contra) {
+        DbHelper db = new DbHelper(context);
         return db.comprobarUsuarioContra(usuario, contra);
     }
 
-    public Boolean anyadirUsuarioContra(String usuario, String contra) {
-        DbHelper db = new DbHelper(null);
+    public Boolean anyadirUsuarioContra(Context context, String usuario, String contra) {
+        DbHelper db = new DbHelper(context);
 
         if (db.anyadirUsuarioContra(usuario, contra) == 0) {
             return false;
@@ -39,8 +41,8 @@ public class Servicio {
         }
     }
 
-    public Boolean existeFavorita(Usuario usuario) {
-        if (obtenerPizzaFavorita(usuario) == null) {
+    public Boolean existeFavorita(Context context, Usuario usuario) {
+        if (obtenerPizzaFavorita(context, usuario) == null) {
             return false;
         }
         else {
@@ -48,23 +50,23 @@ public class Servicio {
         }
     }
 
-    public Pizza obtenerPizzaFavorita(Usuario usuario) {
-        DbHelper db = new DbHelper(null);
+    public Pizza obtenerPizzaFavorita(Context context, Usuario usuario) {
+        DbHelper db = new DbHelper(context);
         return db.obtenerPizzaFavorita(usuario);
     }
 
-    public ArrayList<Pizza> obtenerPizzasPred() {
-        DbHelper db = new DbHelper(null);
+    public ArrayList<Pizza> obtenerPizzasPred(Context context) {
+        DbHelper db = new DbHelper(context);
         return db.obtenerPizzasPred();
     }
 
-    public void quitarFavorita(Usuario usuario) {
-        DbHelper db = new DbHelper(null);
+    public void quitarFavorita(Context context, Usuario usuario) {
+        DbHelper db = new DbHelper(context);
         db.quitarFavorita(usuario);
     }
 
-    public void anyadirPizza(Pizza pizza) {
-        DbHelper db = new DbHelper(null);
+    public void anyadirPizza(Context context, Pizza pizza) {
+        DbHelper db = new DbHelper(context);
         db.anyadirPizza(pizza);
     }
 }

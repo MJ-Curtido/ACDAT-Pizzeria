@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btnIniciarSesion) {
-            if (Servicio.getInstance().comprobarUsuarioContra(binding.tbUsuario.getText().toString(), binding.tbContra.getText().toString())) {
+            if (Servicio.getInstance().comprobarUsuarioContra(MainActivity.this, binding.tbUsuario.getText().toString(), binding.tbContra.getText().toString())) {
                 Usuario usuario = new Usuario(binding.tbUsuario.getText().toString(), binding.tbContra.getText().toString());
 
                 Toast.makeText(this, "Ha iniciado sesión correctamente.", Toast.LENGTH_SHORT).show();

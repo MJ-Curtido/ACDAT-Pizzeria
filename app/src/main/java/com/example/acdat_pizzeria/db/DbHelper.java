@@ -31,13 +31,13 @@ public class DbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE \"usuario\" (\n" +
-                "\t\"nomUsuario\"\tTEXT NOT NULL UNIQUE,\n" +
+                "\t\"nomUsuario\"\tTEXT,\n" +
                 "\t\"contrasenya\"\tTEXT NOT NULL,\n" +
                 "\tPRIMARY KEY(\"nomUsuario\")\n" +
-                ")");
+                ");");
 
         sqLiteDatabase.execSQL("CREATE TABLE \"pizza\" (\n" +
-                "\t\"id\"\tINTEGER UNIQUE,\n" +
+                "\t\"id\"\tINTEGER,\n" +
                 "\t\"tamanyo\"\tINTEGER,\n" +
                 "\t\"tipoSalsa\"\tINTEGER NOT NULL,\n" +
                 "\t\"favorita\"\tINTEGER,\n" +
@@ -46,15 +46,15 @@ public class DbHelper extends SQLiteOpenHelper {
                 "\t\"nomUsuario\"\tTEXT,\n" +
                 "\tFOREIGN KEY(\"nomUsuario\") REFERENCES \"usuario\"(\"nomUsuario\"),\n" +
                 "\tPRIMARY KEY(\"id\" AUTOINCREMENT)\n" +
-                ")");
+                ");");
 
         sqLiteDatabase.execSQL("CREATE TABLE \"ingrediente\" (\n" +
-                "\t\"id\"\tINTEGER UNIQUE,\n" +
+                "\t\"id\"\tINTEGER,\n" +
                 "\t\"tipoIngrediente\"\tINTEGER NOT NULL,\n" +
                 "\t\"idPizza\"\tINTEGER NOT NULL,\n" +
                 "\tFOREIGN KEY(\"idPizza\") REFERENCES \"pizza\"(\"id\"),\n" +
                 "\tPRIMARY KEY(\"id\" AUTOINCREMENT)\n" +
-                ")");
+                ");");
 
         insertInicioUsuario(sqLiteDatabase);
 
@@ -88,32 +88,32 @@ public class DbHelper extends SQLiteOpenHelper {
 
         values = new ContentValues();
         values.put("tipoIngrediente", 10);
-        values.put("idPizza", 2);
+        values.put("idPizza", 3);
         sqLiteDatabase.insert("ingrediente", null, values);
 
         values = new ContentValues();
         values.put("tipoIngrediente", 11);
-        values.put("idPizza", 2);
+        values.put("idPizza", 3);
         sqLiteDatabase.insert("ingrediente", null, values);
 
         values = new ContentValues();
         values.put("tipoIngrediente", 0);
-        values.put("idPizza", 3);
+        values.put("idPizza", 2);
         sqLiteDatabase.insert("ingrediente", null, values);
 
         values = new ContentValues();
         values.put("tipoIngrediente", 4);
-        values.put("idPizza", 3);
+        values.put("idPizza", 2);
         sqLiteDatabase.insert("ingrediente", null, values);
 
         values = new ContentValues();
         values.put("tipoIngrediente", 6);
-        values.put("idPizza", 3);
+        values.put("idPizza", 2);
         sqLiteDatabase.insert("ingrediente", null, values);
 
         values = new ContentValues();
         values.put("tipoIngrediente", 7);
-        values.put("idPizza", 3);
+        values.put("idPizza", 2);
         sqLiteDatabase.insert("ingrediente", null, values);
     }
 
@@ -149,15 +149,15 @@ public class DbHelper extends SQLiteOpenHelper {
 
         values = new ContentValues();
 
-        values.put("tipoSalsa", 3);
-        values.put("nombre", 3);
+        values.put("tipoSalsa", 4);
+        values.put("nombre", 2);
 
         sqLiteDatabase.insert("pizza", null, values);
 
         values = new ContentValues();
 
-        values.put("tipoSalsa", 4);
-        values.put("nombre", 2);
+        values.put("tipoSalsa", 3);
+        values.put("nombre", 3);
 
         sqLiteDatabase.insert("pizza", null, values);
     }
@@ -182,6 +182,7 @@ public class DbHelper extends SQLiteOpenHelper {
             System.out.println("Se ha introducido correctamente.");
         } catch (Exception ex){
             System.err.println("Algo falló al insertar.");
+            System.err.println(ex.getMessage());
         }
 
         return id;
@@ -189,57 +190,68 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public long anyadirPizza(Pizza pizza){
         long id = 0;
+        ContentValues values;
 
-        try {
-            SQLiteDatabase bbdd = this.getWritableDatabase();
+        SQLiteDatabase bbdd = this.getWritableDatabase();
 
-            ContentValues values = new ContentValues();
-            values.put("tamanyo", pizza.getTamanyo().ordinal());
-            values.put("tipoSalsa", pizza.getSalsa().ordinal());
-            values.put("favorita", pizza.isFavorita());
-            values.put("nombre", pizza.getNombre().ordinal());
-            values.put("precio", pizza.getPrecio());
-            values.put("nomUsuario", pizza.getUsuario().getNomUsuario());
+        values = new ContentValues();
+        values.put("tamanyo", pizza.getTamanyo().ordinal());
+        values.put("tipoSalsa", pizza.getSalsa().ordinal());
+        values.put("favorita", pizza.isFavorita());
+        values.put("nombre", 0);
+        values.put("precio", pizza.getPrecio());
+        values.put("nomUsuario", pizza.getUsuario().getNomUsuario());
 
-            id = bbdd.insert("pizza", null, values);
+        id = bbdd.insert("pizza", null, values);
 
-            System.out.println("Se ha introducido correctamente.");
-        } catch (Exception ex){
-            System.err.println("Algo falló al insertar.");
-        }
+        insertarIngrediente(bbdd, pizza);
+
+        System.out.println("Se ha introducido correctamente.");
 
         return id;
     }
 
-    public long insertarIngrediente(Pizza pizza){
-        long id = 0;
+    public Integer obtenerMaxIdPizza() {
+        SQLiteDatabase bbdd = this.getWritableDatabase();
 
-        try {
-            SQLiteDatabase bbdd = this.getWritableDatabase();
+        Integer idPizza = -1;
 
-            for (int i = 0; i < pizza.getIngredientes().size(); i++) {
-                ContentValues values = new ContentValues();
-                values.put("tipoIngrediente", pizza.getIngredientes().get(i).ordinal());
-                values.put("idPizza", pizza.getId());
+        Cursor cursor = bbdd.rawQuery("SELECT MAX(ID) FROM pizza", null);
 
-                id = bbdd.insert("ingrediente", null, values);
-            }
+        if (cursor.moveToFirst()) {
+            idPizza = cursor.getInt(0);
+        }
+        cursor.close();
 
-            System.out.println("Se ha introducido correctamente.");
-        } catch (Exception ex){
-            System.err.println("Algo falló al insertar.");
+        return idPizza;
+    }
+
+    public void insertarIngrediente(SQLiteDatabase bbdd, Pizza pizza){
+        System.out.println(pizza.getIngredientes().toString());
+        Integer idNuevaPizza = obtenerMaxIdPizza();
+        ContentValues values;
+
+        for (int i = 0; i < pizza.getIngredientes().size(); i++) {
+            values = new ContentValues();
+            System.out.println(i);
+
+            //values.put("tipoIngrediente", pizza.getIngredientes().get(i).ordinal());
+            //values.put("idPizza", idNuevaPizza);
+
+            System.out.println("INSERT INTO ingrediente (tipoIngrediente, idPizza) VALUES(" + pizza.getIngredientes().get(i).ordinal() + ", " + idNuevaPizza + ");");
+            bbdd.execSQL("INSERT INTO ingrediente (tipoIngrediente, idPizza) VALUES(" + pizza.getIngredientes().get(i).ordinal() + ", " + idNuevaPizza + ");");
+
+            //bbdd.insert("ingrediente", null, values);
         }
 
-        return id;
+        System.out.println("Se ha introducido correctamente.");
     }
 
     public ArrayList<TipoIngrediente> obtenerIngredientes(Integer idPizza) {
         SQLiteDatabase bbdd = this.getWritableDatabase();
 
         ArrayList<TipoIngrediente> listaIngredientes = new ArrayList<TipoIngrediente>();
-        Cursor cursorIngrediente = null;
-
-        cursorIngrediente = bbdd.rawQuery("SELECT * FROM ingrediente WHERE idPizza = " + idPizza, null);
+        Cursor cursorIngrediente = bbdd.rawQuery("SELECT * FROM ingrediente WHERE idPizza = " + idPizza + ";", null);
 
         if (cursorIngrediente.moveToFirst()) {
             do {
@@ -258,7 +270,7 @@ public class DbHelper extends SQLiteOpenHelper {
         Pizza pizza = null;
         Cursor cursorPizza = null;
 
-        cursorPizza = bbdd.rawQuery("SELECT * FROM pizza", null);
+        cursorPizza = bbdd.rawQuery("SELECT * FROM pizza;", null);
 
         if (cursorPizza.moveToFirst()) {
             do {
@@ -285,7 +297,7 @@ public class DbHelper extends SQLiteOpenHelper {
         Usuario usuario = null;
         Cursor cursorUsuario = null;
 
-        cursorUsuario = bbdd.rawQuery("SELECT * FROM usuario WHERE nomUsuario = ''" + nomUsuario + "'", null);
+        cursorUsuario = bbdd.rawQuery("SELECT * FROM usuario WHERE nomUsuario = '" + nomUsuario + "';", null);
 
         if (cursorUsuario.moveToFirst()) {
             do {
@@ -306,13 +318,20 @@ public class DbHelper extends SQLiteOpenHelper {
         Pizza pizza = null;
         Cursor cursorPizza = null;
 
-        cursorPizza = bbdd.rawQuery("SELECT * FROM pizza WHERE nomUsuario = '" + usuario.getNomUsuario() + "'", null);
+        cursorPizza = bbdd.rawQuery("SELECT * FROM pizza WHERE nomUsuario = '" + usuario.getNomUsuario() + "';", null);
 
         if (cursorPizza.moveToFirst()) {
             do {
-                if (cursorPizza.getInt(3) != 1) {
+                if (cursorPizza.getInt(3) == 1) {
                     pizza = new Pizza();
 
+                    System.out.println(cursorPizza.getInt(0));
+                    System.out.println(TipoTamanyo.values()[cursorPizza.getInt(1)]);
+                    System.out.println(TipoSalsa.values()[cursorPizza.getInt(2)]);
+                    System.out.println(TipoNombre.values()[cursorPizza.getInt(4)]);
+                    System.out.println(cursorPizza.getInt(5));
+                    System.out.println(this.obtenerUsuario(cursorPizza.getString(6)));
+                    System.out.println(this.obtenerIngredientes(cursorPizza.getInt(0)).toString());
                     pizza.setId(cursorPizza.getInt(0));
                     pizza.setTamanyo(TipoTamanyo.values()[cursorPizza.getInt(1)]);
                     pizza.setSalsa(TipoSalsa.values()[cursorPizza.getInt(2)]);
@@ -321,11 +340,12 @@ public class DbHelper extends SQLiteOpenHelper {
                     pizza.setPrecio(cursorPizza.getInt(5));
                     pizza.setUsuario(this.obtenerUsuario(cursorPizza.getString(6)));
                     pizza.setIngredientes(this.obtenerIngredientes(cursorPizza.getInt(0)));
+
+                    System.out.println("Pizza favorita" + pizza.toString());
                 }
-            } while(cursorPizza.moveToNext());
+            } while(cursorPizza.moveToNext() && pizza == null);
         }
         cursorPizza.close();
-
         return pizza;
     }
 
@@ -333,8 +353,10 @@ public class DbHelper extends SQLiteOpenHelper {
         SQLiteDatabase bbdd = this.getWritableDatabase();
 
         Pizza pizza = obtenerPizzaFavorita(usuario);
-
-        bbdd.execSQL("UPDATE pizza SET favorita = 0 WHERE id = " + pizza.getId() + " and favorita = 1");
+        System.out.println(pizza);
+        if (pizza != null) {
+            bbdd.execSQL("UPDATE pizza SET favorita = 0 WHERE id = " + pizza.getId() + " and favorita = 1;");
+        }
 
         bbdd.close();
     }
@@ -345,7 +367,7 @@ public class DbHelper extends SQLiteOpenHelper {
         Boolean existe = false;
         Cursor cursorPizza = null;
 
-        cursorPizza = bbdd.rawQuery("SELECT * FROM usuario WHERE nomUsuario = '" + nomUsuario + "' and contrasenya = '" + contrasenya + "'", null);
+        cursorPizza = bbdd.rawQuery("SELECT * FROM usuario WHERE nomUsuario = '" + nomUsuario + "' and contrasenya = '" + contrasenya + "';", null);
 
         if (cursorPizza.moveToFirst()) {
             existe = true;

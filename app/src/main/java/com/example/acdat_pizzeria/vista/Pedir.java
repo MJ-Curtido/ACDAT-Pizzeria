@@ -57,12 +57,12 @@ public class Pedir extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if (binding.cbFav.isChecked()) {
-            Servicio.getInstance().quitarFavorita(this.usuario);
+            Servicio.getInstance().quitarFavorita(Pedir.this, this.usuario);
 
             pizza.setFavorita(true);
         }
 
-        Servicio.getInstance().anyadirPizza(pizza);
+        Servicio.getInstance().anyadirPizza(Pedir.this, pizza);
 
         Intent i = new Intent(Pedir.this, PedidoRealizado.class);
         i.putExtra("usuarioActual", usuario);
